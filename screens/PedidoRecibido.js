@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text,ImageBackground,StyleSheet, Image,TouchableOpacity} from 'react-native';
+import { View, Text,ImageBackground,StyleSheet, Image,TouchableOpacity,TextInput,Alert,Button} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 export default class PedidoRecibido extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      indicaciones:"",
     };
   }
 
@@ -16,7 +17,7 @@ export default class PedidoRecibido extends Component {
       <View style={styles.overlay}>
 
         <View>
-            <Image style={styles.image} source={{ uri: 'https://pa1.aminoapps.com/7096/d77f8487fe17efab5c91506ff4b210a7be77dec2r1-480-270_hq.gif' }} />
+            <Image style={styles.image} source={{ uri: 'https://img.freepik.com/foto-gratis/servimos-mejores-pasteles_637285-7884.jpg?semt=ais_hybrid' }} />
         </View>
 
         <View style={styles.buttonStyleMOD2}>
@@ -27,6 +28,19 @@ export default class PedidoRecibido extends Component {
             <TouchableOpacity onPress={() => navigation.navigate('Comida')}>
               <Text style={styles.buttonText}>Ordenar otro platillo</Text>
             </TouchableOpacity>
+        </View>
+
+        <View style={{ marginTop: 50, marginLeft: 75 }}>
+            <TextInput
+              style={styles.input}
+              placeholder="Tiene usted alguna indicacion?"
+              placeholderTextColor="#aaa"
+              onChangeText={indicaciones => this.setState({indicaciones})}
+            />
+        </View>
+
+        <View style={{ marginTop: 40, marginLeft: 5 }}>
+            <Button title='Ingresar como cliente' color='black' onPress={() => Alert.alert("Sus indicaciones han sido enviadas a la cocina correctamente")} />
         </View>
 
 
@@ -105,6 +119,18 @@ const styles = StyleSheet.create({
         width:'100%',
         height:'10%',
         marginLeft:'0%'
+      },
+      input: {
+        width: '100%',
+        padding: 40,
+        marginVertical: 10,
+        borderWidth: 1,
+        borderColor: '#fff',
+        borderRadius: 5,
+        color: '#fff',
+        backgroundColor: 'black',
+        marginTop: -15,
+        marginLeft:'-12%'
       },
 
   });

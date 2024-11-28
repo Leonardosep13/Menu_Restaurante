@@ -1,12 +1,17 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet,ImageBackground,TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet,ImageBackground,TouchableOpacity,Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 export default function Pedido({ route }) {
   const { item } = route.params;
   const navigation = useNavigation(); 
+  
+  const sigVentana = () =>
+    {
+      Alert.alert("Un mesero ira a recoger su pago")
+      navigation.navigate('PedidoRecibido')
+    }
   return (
-    
     <ImageBackground source={{ uri: 'https://us.123rf.com/450wm/alexraths/alexraths1509/alexraths150900009/44625671-fije-la-tarjeta-de-men%C3%BA-para-restaurantes-en-el-fondo-de-madera.jpg' }} style={styles.background}>
      <View style={styles.overlay}>
     <View>
@@ -22,7 +27,7 @@ export default function Pedido({ route }) {
     </View>
 
     <View style={styles.buttonStyleMOD} >
-            <TouchableOpacity onPress={() => navigation.navigate('PedidoRecibido')}>
+            <TouchableOpacity onPress={() => sigVentana()}>
               <Text style={styles.buttonText}>Pagar con efectivo</Text>
             </TouchableOpacity>
     </View>

@@ -6,6 +6,9 @@ import COMIDAS from './screens/Comidas';
 import PEDIDO from './screens/Pedido'
 import PAGOTARJETA from './screens/PagoTarjeta'
 import PEDIDORECIBIDO from './screens/PedidoRecibido'
+import LOGIN from './screens/Login'
+import COCINA from './screens/Cocina';
+
 export default class Menu extends Component {
   constructor(props) {
     super(props);
@@ -19,6 +22,8 @@ export default class Menu extends Component {
     return (
     <NavigationContainer>
         <Stack.Navigator>
+          <Stack.Screen name="Login" component={LOGIN} options={{ headerShown: false }} />
+          <Stack.Screen name="Cocina" component={COCINA} options={{ headerShown: false }} />
           <Stack.Screen name="Comida" component={COMIDAS} options={{ headerShown: false }} />
           <Stack.Screen name="Pedido" component={PEDIDO} options={{ headerShown: false }} />
           <Stack.Screen name="PagoTarjeta" component={PAGOTARJETA} options={{ headerShown: false }} />
